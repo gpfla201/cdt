@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ScrollView1"
-    android:layout_width="match_parent"
+    android:id="@+id/ScrollView2"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="83dp"
-            android:layout_height="44dp"
-            android:layout_gravity="center"
-            tools:srcCompat="@drawable/aricalendar_btn_back" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/search_key"
-            android:layout_width="232dp"
-            android:layout_height="47dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="용인시 처인구"
-            android:textColor="#131212"
-            android:textSize="30sp" />
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="83dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center"
+                tools:srcCompat="@drawable/aricalendar_btn_back" />
 
-        <ImageButton
-            android:id="@+id/imageButton12"
-            android:layout_width="65dp"
-            android:layout_height="51dp"
-            android:layout_gravity="center"
-            tools:srcCompat="@drawable/empty_heart" />
+            <TextView
+                android:id="@+id/search_key"
+                android:layout_width="232dp"
+                android:layout_height="47dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="용인시 처인구"
+                android:textColor="#131212"
+                android:textSize="30sp" />
 
-    </LinearLayout>
+          <ImageButton
+                android:id="@+id/imageButton12"
+                android:layout_width="65dp"
+                android:layout_height="51dp"
+                android:layout_gravity="center"
+                tools:srcCompat="@drawable/empty_heart" />
+
+
+            <Button
+                android:id="@+id/review_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="리뷰쓰기" />
+
+
+        </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical">
@@ -49,16 +62,15 @@
             android:layout_width="369dp"
             android:layout_height="234dp"
             android:layout_gravity="center"
-            tools:srcCompat="@drawable/testimg"
-            />
+            tools:srcCompat="@drawable/testimg" />
 
         <TextView
             android:id="@+id/pricce"
             android:layout_width="372dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:text="방 가격(월세 100/90)"
             android:gravity="center_horizontal"
+            android:text="방 가격(월세 100/90)"
             android:textColor="#090808"
             android:textSize="30sp" />
 
@@ -67,8 +79,8 @@
             android:layout_width="374dp"
             android:layout_height="39dp"
             android:layout_gravity="center"
-            android:text="외대근처 원룸"
             android:gravity="center_horizontal"
+            android:text="외대근처 원룸"
             android:textSize="18sp" />
 
         <TableLayout
@@ -77,6 +89,8 @@
             android:stretchColumns="1,3">
 
             <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="1dp"
                 android:background="#000000">
 
@@ -102,6 +116,8 @@
             </TableRow>
 
             <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="1dp"
                 android:background="#000000">
 
@@ -124,155 +140,165 @@
                     android:text=""
                     android:textColor="#000000"
                     android:textSize="24sp" />
-            </TableRow>
+                </TableRow>
 
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
-
-                <TextView
+                <TableRow
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="옵션"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
+                    android:background="#000000">
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="옵션"
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
-            </TableRow>
+                    android:background="#000000">
 
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="관리비"
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="관리비"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
+                    android:background="#000000">
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="주차"
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
-            </TableRow>
+                    android:background="#000000">
 
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="임대기간"
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="주차"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
+                    android:background="#000000">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
-            </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="입주가능일"
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
 
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+                </TableRow>
+            </TableLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="임대기간"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
+        </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="입주가능일"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
-            </TableRow>
-        </TableLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
-
-
-        <ListView
-            android:id="@+id/my_listView"
-            android:layout_width="match_parent"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:choiceMode="singleChoice"
-            android:divider="#ffcc22"
-            android:dividerHeight="1.5dp">
+            android:orientation="vertical"
+            tools:context=".MainActivity">
 
-        </ListView>
 
+            <ListView
+                android:id="@+id/my_listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"
+                android:divider="#ffcc22"
+                android:dividerHeight="1.5dp">
+
+            </ListView>
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
