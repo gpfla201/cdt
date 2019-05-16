@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button post_btn2 = (Button)findViewById(R.id.post_btn1);
         Button mypage_btn = (Button)findViewById(R.id.mypage_btn);
+        Button search_btn = (Button)findViewById(R.id.search_btn);
+
 
         post_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +37,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(
+                        getApplicationContext(),
+                        Search.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

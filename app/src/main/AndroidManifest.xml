@@ -19,6 +19,9 @@
         </activity>
         <activity android:name=".Post"/>
         <activity android:name=".Mypage"/>
+        <activity android:name=".Search"/>
+        <activity android:name=".Search_result"/>
+
     </application>
 
 </manifest>
