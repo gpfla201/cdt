@@ -277,6 +277,13 @@
             android:inputType="textPersonName"
             android:text="설명" />
 
+        <Button
+            android:id="@+id/post_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="open"
+            android:text="확인" />
+
 
     </LinearLayout>
 
