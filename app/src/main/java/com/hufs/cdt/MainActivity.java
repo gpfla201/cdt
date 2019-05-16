@@ -14,12 +14,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button post_btn2 = (Button)findViewById(R.id.post_btn1);
+        Button mypage_btn = (Button)findViewById(R.id.mypage_btn);
+
         post_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(
                         getApplicationContext(),
                         Post.class);
+                startActivity(intent);
+            }
+        });
+
+        mypage_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(
+                        getApplicationContext(),
+                        Mypage.class);
                 startActivity(intent);
             }
         });

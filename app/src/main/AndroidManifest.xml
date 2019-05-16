@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Post"/>
+        <activity android:name=".Mypage"/>
     </application>
 
 </manifest>
