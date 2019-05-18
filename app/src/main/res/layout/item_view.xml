@@ -300,9 +300,15 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/home_btn"
+            android:id="@+id/call_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="홈으로 이동" />
+            android:text="메세지로 연락하기" />
+
+        <Button
+            android:id="@+id/home_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 </ScrollView>
