@@ -17,12 +17,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="591mgrsrpc" />
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="" />
+
         <activity android:name=".Post"/>
         <activity android:name=".Mypage"/>
         <activity android:name=".Search"/>
         <activity android:name=".Search_result" />
         <activity android:name=".FindView"/>
         <activity android:name=".Review"/>
+        <activity android:name=".Login"/>
+        <activity android:name=".ChatActivity"/>
 
     </application>
 

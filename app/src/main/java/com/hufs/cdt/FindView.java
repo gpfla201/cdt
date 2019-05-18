@@ -12,7 +12,7 @@ public class FindView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_view);
 
-        Button review_btn = (Button)findViewById(R.id.review_btn);
+        Button review_btn = (Button)findViewById(R.id.login_btn);
         Button home_btn = (Button)findViewById(R.id.home_btn);
 
         review_btn.setOnClickListener(new View.OnClickListener() {
