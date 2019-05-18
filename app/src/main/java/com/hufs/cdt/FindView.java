@@ -13,6 +13,7 @@ public class FindView extends AppCompatActivity {
         setContentView(R.layout.item_view);
 
         Button review_btn = (Button)findViewById(R.id.review_btn);
+        Button home_btn = (Button)findViewById(R.id.home_btn);
 
         review_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -20,6 +21,16 @@ public class FindView extends AppCompatActivity {
                 Intent intent = new Intent(
                         getApplicationContext(),
                         Review.class);
+                startActivity(intent);
+            }
+        });
+
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(
+                        getApplicationContext(),
+                        MainActivity.class);
                 startActivity(intent);
             }
         });
