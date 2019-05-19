@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
