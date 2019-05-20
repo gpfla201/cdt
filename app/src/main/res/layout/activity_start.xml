@@ -26,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="채팅방 입장 또는 새로 만들기"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"/>
             <EditText

@@ -22,6 +22,7 @@
             android:maxHeight="234dp" />
 
         <Button
+            android:id="@+id/pick_picture"
             android:layout_width="369dp"
             android:layout_height="40dp"
             android:layout_gravity="center"

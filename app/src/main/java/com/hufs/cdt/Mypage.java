@@ -13,14 +13,17 @@ public class Mypage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage);
 
-        Button login_btn = (Button)findViewById(R.id.login_btn);
 
-        login_btn.setOnClickListener(new View.OnClickListener() {
+        Button post_btn1 = (Button)findViewById(R.id.post_btn1);
+
+
+
+        post_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(
                         getApplicationContext(),
-                        Login.class);
+                        FindView.class);
                 startActivity(intent);
             }
         });
