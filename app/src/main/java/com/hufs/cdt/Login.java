@@ -214,7 +214,7 @@ public class Login extends AppCompatActivity {
                         });
                     } else { //모든 정보를 가져오도록 허락받았다면
                         //MainActivity로 넘어가면서 유저 정보를 같이 넘겨줌
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Mypage.class);
                         intent.putExtra("name", result.getNickname()); //유저 이름(String)
                         intent.putExtra("profile", result.getProfileImagePath()); //유저 프로필 사진 주소(String)
 
