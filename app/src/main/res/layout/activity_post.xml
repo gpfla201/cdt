@@ -50,7 +50,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:text="경기도 용인시 모현면" />
 
         </LinearLayout>
 
@@ -75,7 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:text="월세 100/90" />
 
         </LinearLayout>
         <LinearLayout
@@ -100,7 +101,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:text="1층" />
 
         </LinearLayout>
         <LinearLayout
@@ -125,7 +126,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:text="24평" />
 
         </LinearLayout>
         <LinearLayout
@@ -150,7 +151,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:text="세탁기, 냉장고, 에어컨 있음" />
 
         </LinearLayout>
         <LinearLayout
@@ -175,7 +176,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:text="없음" />
 
         </LinearLayout>
         <LinearLayout
@@ -200,7 +201,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:text="없음" />
 
         </LinearLayout>
         <LinearLayout
@@ -224,8 +225,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="달력으로 넘어가는거 구현하기" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
         <LinearLayout
@@ -267,6 +267,44 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="     방 종류"
+                android:textColor="#111010"
+                android:textSize="23sp" />
+
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="원룸" />
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="투룸" />
+
+            <CheckBox
+                android:id="@+id/checkBox6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="기타" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/editText7"
             android:layout_width="369dp"
@@ -275,7 +313,7 @@
             android:background="@null"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="설명" />
+            android:text="한국외대 글로벌캠퍼스 주변 단기 임대합니다." />
 
         <Button
             android:id="@+id/post_btn"

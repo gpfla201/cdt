@@ -21,13 +21,13 @@
             android:textSize="25dp" />
 
 
-
         <EditText
             android:id="@+id/title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="제목"
             android:padding="10dp"
+            android:text="이 방 강추합니다!!"
             android:textSize="30dp" />
 
         <RatingBar
@@ -43,12 +43,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="내용을 입력해주세요." />
+            android:hint="내용을 입력해주세요."
+            android:text="물 수압도 강하고 버스정류장이 집 앞에 있어서 교통편이 편리합니다. " />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/review_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="OnClick"
             android:text="제출하기" />
 
     </LinearLayout>

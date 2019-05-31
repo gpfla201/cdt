@@ -15,6 +15,7 @@ public class Mypage extends AppCompatActivity{
 
 
         Button post_btn1 = (Button)findViewById(R.id.post_btn1);
+        Button login_btn = (Button)findViewById(R.id.login_btn);
 
 
 
@@ -24,6 +25,16 @@ public class Mypage extends AppCompatActivity{
                 Intent intent = new Intent(
                         getApplicationContext(),
                         FindView.class);
+                startActivity(intent);
+            }
+        });
+
+        login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(
+                        getApplicationContext(),
+                        Login.class);
                 startActivity(intent);
             }
         });

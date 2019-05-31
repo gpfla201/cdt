@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class StartActivity extends AppCompatActivity {
 
-    private EditText user_chat, user_edit;
+    private TextView user_edit, user_chat,test;
+    //private EditText user_edit;
     private Button user_next;
     private ListView chat_list;
 
@@ -30,20 +32,26 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        user_chat = (EditText) findViewById(R.id.user_chat);
-        user_edit = (EditText) findViewById(R.id.user_edit);
+        user_chat = (TextView) findViewById(R.id.user_chat);
+        user_edit = (TextView) findViewById(R.id.user_edit);
         user_next = (Button) findViewById(R.id.user_next);
         chat_list = (ListView) findViewById(R.id.chat_list);
+        test=(TextView)findViewById(R.id.test);
 
+        Intent intent = getIntent();
+        final String chat_name=intent.getStringExtra("chatName");
+        final String name = intent.getStringExtra("userName");
+        user_chat.setText(chat_name);
+        user_edit.setText(name);
         user_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user_edit.getText().toString().equals("") || user_chat.getText().toString().equals(""))
+                if (chat_name.equals("") || name.equals(""))
                     return;
 
                 Intent intent = new Intent(StartActivity.this, ChatActivity.class);
-                intent.putExtra("chatName", user_chat.getText().toString());
-                intent.putExtra("userName", user_edit.getText().toString());
+                intent.putExtra("chatName", chat_name);
+                intent.putExtra("userName", name);
                 startActivity(intent);
             }
         });
