@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class FindView extends AppCompatActivity {
 
@@ -16,10 +17,16 @@ public class FindView extends AppCompatActivity {
         setContentView(R.layout.item_view);
 
         test=(EditText)findViewById(R.id.test);
-
+        //TextView myaddress=(TextView)findViewById(R.id.modeladdress);
         Button review_btn = (Button)findViewById(R.id.login_btn);
         Button home_btn = (Button)findViewById(R.id.home_btn);
         Button call_btn = (Button) findViewById(R.id.call_btn);
+
+        Intent intent=getIntent();
+        String address=intent.getStringExtra("addressname");
+        //myaddress.setText(address);
+
+
 
         review_btn.setOnClickListener(new View.OnClickListener() {
             @Override

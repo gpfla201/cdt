@@ -5,14 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -89,6 +92,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView,
+                                    View view, int position, long id) {
+
+                //클릭한 아이템의 문자열을 가져옴
+                String selected_item = (String)adapterView.getItemAtPosition(position);
+
+                TextView address=(TextView)findViewById(R.id.textTitle) ;
+                String s= address.getText().toString();
+                //텍스트뷰에 출력
+                Intent intent= new Intent(MainActivity.this,FindView.class);
+                intent.putExtra("addressname",s);
+                startActivityForResult(intent,0);
+            }
+        });
 
 
 
@@ -138,34 +158,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-/*
-        //밑은 ArrayList임
-        ArrayList<ItemData> arrayData = new ArrayList<>();
-
-        //myItem에서 아이템을 넣고 확인
-        ItemData myItem = new ItemData();
-
-        myItem.strTitle = "아이템 평수";
-        myItem.strAddress = "주소";
-        arrayData.add(myItem);
-        //이걸 DB에 넣고 진행할겁니다.
-*/
-
-        //raw한 데이터를 넣는 방법은 밑과 같다.
-        //ListAdapter oAdapter = new ListAdapter(arrayData);
-        //mylistview.setAdapter(oAdapter);
-
     }
-
     //onCreate
+
 }

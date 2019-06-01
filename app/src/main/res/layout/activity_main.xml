@@ -6,7 +6,8 @@
 
     android:layout_height="match_parent"
 
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
 
 
 
@@ -92,7 +93,8 @@
 
         android:layout_weight="5"
 
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:descendantFocusability="blocksDescendants">
 
 
 
@@ -108,7 +110,8 @@
 
             android:divider="#ffcc22"
 
-            android:dividerHeight="1.5dp">
+            android:dividerHeight="1.5dp"
+            android:descendantFocusability="blocksDescendants">
 
 
 
