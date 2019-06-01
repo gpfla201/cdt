@@ -9,6 +9,7 @@ public class makepost {
     public String mykey;
     public String id;
     public String address;
+    public String jibunadd;
     public String speceficaddress;
     public String price;
     public String floor;
@@ -21,10 +22,11 @@ public class makepost {
     public makepost(){
     }
 
-    public  makepost(String id,String mykey, String address, String speceficaddress,String price,String floor,String room, String option, String guan, String parking, String seol){
+    public  makepost(String id,String mykey, String address,String jibunadd, String speceficaddress,String price,String floor,String room, String option, String guan, String parking, String seol){
         this.id=id;
         this.mykey=mykey;
         this.address=address;
+        this.jibunadd=jibunadd;
         this.speceficaddress=speceficaddress;
         this.price=price;
         this.floor=floor;
@@ -42,6 +44,7 @@ public class makepost {
         result.put("uid", id);
         result.put("keys",mykey);
         result.put("address", address);
+        result.put("jibun_address",jibunadd);
         result.put("specefic",speceficaddress);
         result.put("price", price);
         result.put("floor", floor);

@@ -77,6 +77,7 @@ public class Post extends AppCompatActivity {
     EditText aaddress,price, floor, room, option, guan, parking,seol,speadd;
     Button send;
     public static final String id=Mypage.strEmail;
+    public static String jibunadd, roadadd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -139,7 +140,9 @@ public class Post extends AppCompatActivity {
                         String mykey=key;
                         //String id=myid;
                         Log.d("내아이디",id);
+                        String naddresss=getjibunadd();
                         String naddress=aaddress.getText().toString();
+                        String roadaddress=getRoadadd();
                         String specefic=speadd.getText().toString();
                         Log.d("내주소: ",naddress);
                         String nprice=price.getText().toString();
@@ -150,19 +153,17 @@ public class Post extends AppCompatActivity {
                         String nparking=parking.getText().toString();
                         String nseol=seol.getText().toString();
 
-                        makepost mypost=new makepost(id,mykey,naddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol);
+                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol);
 
                         Map<String, Object> postValues = mypost.toMap();
                         Map<String, Object> childUpdates = new HashMap<>();
                         //만약에 글을 썼으면 id를 다르게 해서 넣는다.
 
-                        childUpdates.put("postings"+"/"+naddress+"/"+key,postValues);
+                        childUpdates.put("postings"+"/"+getjibunadd()+"/"+key,postValues);
                         childUpdates.put("/user-post" +"/"+key,postValues);
 
                         //앱에 내용 추가하는거임
                         mRootRef.updateChildren(childUpdates);
-
-
 
 
                         Toast.makeText(getApplicationContext(), "게시글이 올라갔습니다.", Toast.LENGTH_SHORT).show();
@@ -385,7 +386,7 @@ public class Post extends AppCompatActivity {
 
 
                         String jsonString = (String)msg.obj;
-
+                        Log.d("json message는",jsonString);
                         Post.adresult.setText(jsonString);
 
 
@@ -564,6 +565,7 @@ public class Post extends AppCompatActivity {
                     JSONObject subJsonObject = jsonArray.getJSONObject(0);
                     String jibun = subJsonObject.getString("jibun_address");
                     String road = subJsonObject.getString("road_address");
+                    setjibun(jibun,road);
                     double x=subJsonObject.getDouble("x");
                     double y=subJsonObject.getDouble("y");
                     String k= String.valueOf(x);
@@ -586,8 +588,17 @@ public class Post extends AppCompatActivity {
         thread.start();
 
     }
-
-
-
-
+    public static void setjibun(String jibun,String road){
+        jibunadd=jibun;
+        roadadd=road;
+    }
+    public String getjibunadd(){
+        return jibunadd;
+    }
+    public String getRoadadd(){
+        return roadadd;
+    }
+    public String getmyid(){
+        return id;
+    }
 }
