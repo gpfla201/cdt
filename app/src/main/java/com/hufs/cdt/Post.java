@@ -26,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -45,6 +47,8 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Post extends AppCompatActivity {
 
@@ -67,14 +71,33 @@ public class Post extends AppCompatActivity {
 
     private File tempFile;
 
-
-
-
+    //firebase에서 DB를 받아오는 부분입니다.
+    public static DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    public DatabaseReference conditionRef = mRootRef.child("posting").push();
+    EditText aaddress,price, floor, room, option, guan, parking,seol,speadd;
+    Button send;
+    public static final String id=Mypage.strEmail;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
+
+        aaddress=(EditText)findViewById(R.id.editText);
+        price=(EditText)findViewById(R.id.editText6);
+        floor=(EditText)findViewById(R.id.editText2);
+        room=(EditText)findViewById(R.id.editText3);
+        option=(EditText)findViewById(R.id.editText4);
+        guan=(EditText)findViewById(R.id.editText5);
+        parking=(EditText)findViewById(R.id.editText1);
+        seol=(EditText)findViewById(R.id.editText7);
+        speadd=(EditText)findViewById(R.id.specefic);
+        send=(Button)findViewById(R.id.post_btn);
+
+
+
+
 
         Button pick_picture = (Button)findViewById(R.id.pick_picture);
         Button adsearch=(Button)findViewById(R.id.adsearch);
@@ -107,6 +130,40 @@ public class Post extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+
+                        //DB넣는부분입니다
+                        //
+                        //
+                        String key = mRootRef.push().getKey();
+                        String mykey=key;
+                        //String id=myid;
+                        Log.d("내아이디",id);
+                        String naddress=aaddress.getText().toString();
+                        String specefic=speadd.getText().toString();
+                        Log.d("내주소: ",naddress);
+                        String nprice=price.getText().toString();
+                        String nfloor=floor.getText().toString();
+                        String nroom=room.getText().toString();
+                        String noption=option.getText().toString();
+                        String nguan=guan.getText().toString();
+                        String nparking=parking.getText().toString();
+                        String nseol=seol.getText().toString();
+
+                        makepost mypost=new makepost(id,mykey,naddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol);
+
+                        Map<String, Object> postValues = mypost.toMap();
+                        Map<String, Object> childUpdates = new HashMap<>();
+                        //만약에 글을 썼으면 id를 다르게 해서 넣는다.
+
+                        childUpdates.put("postings"+"/"+naddress+"/"+key,postValues);
+                        childUpdates.put("/user-post" +"/"+key,postValues);
+
+                        //앱에 내용 추가하는거임
+                        mRootRef.updateChildren(childUpdates);
+
+
+
 
                         Toast.makeText(getApplicationContext(), "게시글이 올라갔습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), FindView.class);

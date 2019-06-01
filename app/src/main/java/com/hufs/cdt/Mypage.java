@@ -10,11 +10,12 @@ import android.widget.TextView;
 
 
 public class Mypage extends AppCompatActivity{
+    public static String strEmail;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage);
         Intent intent= getIntent();
-        String strEmail = intent.getStringExtra("email");
+        strEmail = intent.getStringExtra("email");
         TextView textView=(TextView)findViewById(R.id.login_id);
         textView.setText(strEmail);
 
