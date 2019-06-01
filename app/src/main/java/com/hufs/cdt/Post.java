@@ -41,6 +41,10 @@ public class Post extends AppCompatActivity {
 
     private File tempFile;
 
+
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
