@@ -69,6 +69,13 @@ public class geo extends AsyncTask<String, Void, geo.Point[]> {
         onGeoPointListener = listener;
 
     }
+    public geo(Post context, OnGeoPointListener listener) {
+
+        this.context = context;
+
+        onGeoPointListener = listener;
+
+    }
 
 
 

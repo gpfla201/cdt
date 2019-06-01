@@ -51,6 +51,14 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="경기도 용인시 모현면" />
+            <Button
+                android:id="@+id/adsearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="검색"
+                android:textSize="10sp" />
+
 
         </LinearLayout>
 
@@ -314,6 +322,13 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="한국외대 글로벌캠퍼스 주변 단기 임대합니다." />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="asfasdfd" />
 
         <Button
             android:id="@+id/post_btn"

@@ -3,6 +3,7 @@ package com.hufs.cdt;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +12,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
@@ -18,14 +21,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,6 +54,16 @@ public class Post extends AppCompatActivity {
 
     private static final int PICK_FROM_ALBUM = 1;
     private static final int PICK_FROM_CAMERA = 2;
+    public String addresssearch;
+    private TextView adsearch;
+    public static final int LOAD_SUCCESS = 101;
+
+    public static double xandyx=0;
+
+    public static double xandyy=0;
+
+    private TextView adresult;
+    public String addr;
 
     private File tempFile;
 
@@ -51,6 +77,24 @@ public class Post extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
         Button pick_picture = (Button)findViewById(R.id.pick_picture);
+        Button adsearch=(Button)findViewById(R.id.adsearch);
+        adresult=(TextView)findViewById(R.id.textView11);
+        adsearch.setOnClickListener(new View.OnClickListener() {
+
+
+
+            @Override
+
+            public void onClick(View v) {
+
+                thrun();
+                getJSON();
+
+
+            }
+
+        });
+
         Button pbt=(Button)findViewById(R.id.post_btn);
 
         pbt.setOnClickListener(new View.OnClickListener() {
@@ -261,6 +305,231 @@ public class Post extends AppCompatActivity {
                 .check();
 
     }
+
+    private final MyHandler mHandler = new MyHandler(this);
+
+
+    private static class MyHandler extends Handler {
+        private final WeakReference<Post> weakReference;
+
+        public MyHandler(Post Post) {
+            weakReference = new WeakReference<Post>(Post);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            Post Post= weakReference.get();
+
+            if (Post!= null) {
+                switch (msg.what) {
+
+                    case LOAD_SUCCESS:
+
+
+                        String jsonString = (String)msg.obj;
+
+                        Post.adresult.setText(jsonString);
+
+
+
+                        break;
+                }
+            }
+        }
+    }
+
+
+    public void thrun(){
+
+
+
+
+
+        Thread thread= new Thread(new Runnable() {
+
+            private boolean positionFlag;
+
+            private void getPoint(String... addr) {
+
+                geo geo = new geo(Post.this, listener);
+
+                geo.execute(addr);
+
+            }
+
+
+
+            private geo.OnGeoPointListener listener = new geo.OnGeoPointListener() {
+
+                @Override
+
+                public void onPoint(geo.Point[] p) {
+
+                    int sCnt = 0;
+
+                    for (geo.Point point : p) {
+
+
+
+                        if (point.havePoint) sCnt++;
+
+
+
+                        double k=  point.x;
+
+                        double d=  point.y;
+
+
+
+                        xandyx=point.x;
+
+                        xandyy=point.y;
+
+
+                    }
+
+
+
+                }
+
+
+
+                @Override
+
+                public void onProgress(int progress, int max) {
+
+
+
+                }
+
+            };
+
+            @Override
+
+            public void run() {
+
+                final EditText editText=(EditText)findViewById(R.id.editText);
+
+                final String c=editText.getText().toString();
+
+
+
+                getPoint(
+
+                        c
+
+
+
+                );
+                addr=c;
+
+
+            }
+
+        });
+        thread.start();
+
+    }
+
+    public void  getJSON() {
+
+        Thread thread = new Thread(new Runnable() {
+
+            public void run() {
+
+                String result;
+                String clientId = "u9zcc3txnl";// 애플리케이션 클라이언트 아이디값";
+
+                String clientSecret = "u4Mi9iOJWcFa2qlUhAo15AsZ6iTwHTxuolzTLGcW";// 애플리케이션 클라이언트 시크릿값";
+                try {
+
+                    addr = URLEncoder.encode(addr, "UTF-8");
+
+                    String apiURL = "https://naveropenapi.apigw.ntruss.com/map-place/v1/search?query="+addr+"&coordinate="+xandyx+","+xandyy; // json
+
+                    // String apiURL =
+
+                    // "https://openapi.naver.com/v1/map/geocode.xml?query=" + addr; //
+
+                    // xml
+
+                    URL url = new URL(apiURL);
+
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+                    con.setRequestMethod("GET");
+
+                    con.setRequestProperty("X-NCP-APIGW-API-KEY-ID",clientId );
+
+                    con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
+
+                    int responseCode = con.getResponseCode();
+                    InputStream inputStream;
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+
+                        inputStream = con.getInputStream();
+                    } else {
+                        inputStream = con.getErrorStream();
+
+                    }
+
+
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+
+
+                    while ((line = bufferedReader.readLine()) != null) {
+                        sb.append(line);
+                    }
+
+                    bufferedReader.close();
+                    con.disconnect();
+
+                    result = sb.toString().trim();
+
+
+
+
+                } catch (Exception e) {
+                    result = e.toString();
+                }
+
+                String json=result;
+                try {
+                    JSONObject jsonObject = new JSONObject(json);
+                    String predictions = jsonObject.getString("places");
+                    JSONArray jsonArray = new JSONArray(predictions);
+
+                    JSONObject subJsonObject = jsonArray.getJSONObject(0);
+                    String jibun = subJsonObject.getString("jibun_address");
+                    String road = subJsonObject.getString("road_address");
+                    double x=subJsonObject.getDouble("x");
+                    double y=subJsonObject.getDouble("y");
+                    String k= String.valueOf(x);
+                    String w= String.valueOf(y);
+                    String aqw=jibun+"\n"+road+"\n"+k+"\n"+w;
+                    Message message = mHandler.obtainMessage(LOAD_SUCCESS,aqw);
+                    mHandler.sendMessage(message);
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+
+        });
+        thread.start();
+
+    }
+
 
 
 
