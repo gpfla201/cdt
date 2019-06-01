@@ -22,6 +22,7 @@ public class ListAdapter extends BaseAdapter
         nListCnt = m_oData.size();
     }
 
+
     @Override
     public int getCount()
     {
@@ -60,5 +61,9 @@ public class ListAdapter extends BaseAdapter
         oTextTitle.setText(m_oData.get(position).strTitle);
         oTextDate.setText(m_oData.get(position).strAddress);
         return convertView;
+    }
+    public void remove(){
+
+        m_oData.clear();
     }
 }

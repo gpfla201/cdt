@@ -131,7 +131,8 @@ public class Post extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        String ok="ok";
+                        Log.d("내아이디",ok);
 
                         //DB넣는부분입니다
                         //
@@ -141,9 +142,9 @@ public class Post extends AppCompatActivity {
                         //String id=myid;
                         Log.d("내아이디",id);
                         String naddresss=getjibunadd();
-                        String naddress=aaddress.getText().toString();
                         String roadaddress=getRoadadd();
                         String specefic=speadd.getText().toString();
+                        String naddress=naddresss+" "+specefic;
                         Log.d("내주소: ",naddress);
                         String nprice=price.getText().toString();
                         String nfloor=floor.getText().toString();
@@ -159,7 +160,7 @@ public class Post extends AppCompatActivity {
                         Map<String, Object> childUpdates = new HashMap<>();
                         //만약에 글을 썼으면 id를 다르게 해서 넣는다.
 
-                        childUpdates.put("postings"+"/"+getjibunadd()+"/"+key,postValues);
+                        childUpdates.put("postings"+"/"+naddress,postValues);
                         childUpdates.put("/user-post" +"/"+key,postValues);
 
                         //앱에 내용 추가하는거임
