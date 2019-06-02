@@ -36,6 +36,8 @@ public class search_result_list extends AppCompatActivity {
         Intent intent=getIntent();
         inputaddress=intent.getStringExtra("inputaddress");
 
+
+
         mylistview=(ListView)findViewById(R.id.search_list_view);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseRef = database.getReference("postings");
@@ -52,9 +54,10 @@ public class search_result_list extends AppCompatActivity {
                     myaddress=myaddress+" "+spece;
                     String roadaddress = fileSnapshot.child("jibun_address").getValue(String.class);
                     String price = fileSnapshot.child("price").getValue(String.class);
+                    String uid = fileSnapshot.child("uid").getValue(String.class);
                     //받아온 주소랑 가격을 받아옴
 
-                    if(myaddress.contains(inputaddress)||roadaddress.contains(inputaddress)) {
+                    if(myaddress.contains(inputaddress)||roadaddress.contains(inputaddress)||uid.contains(inputaddress)) {
                     myItem=new ItemData();
                     myItem.strTitle = myaddress;
                     myItem.strAddress =price;

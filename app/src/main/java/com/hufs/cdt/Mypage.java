@@ -26,17 +26,17 @@ public class Mypage extends AppCompatActivity{
 
         Button post_btn1 = (Button)findViewById(R.id.post_btn1);
         Button login_btn = (Button)findViewById(R.id.login_btn);
-
+        Button home = (Button)findViewById(R.id.action_btn);
 
 
         post_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(
-                        getApplicationContext(),
-                        MainActivity.class);
 
-                startActivity(intent);
+                Intent intent =new Intent(getApplicationContext(),search_result_list.class);
+                Log.e("inputaddress",strEmail);
+                intent.putExtra("inputaddress",strEmail);
+                startActivityForResult(intent,3);
             }
         });
 
@@ -46,6 +46,16 @@ public class Mypage extends AppCompatActivity{
                 Intent intent = new Intent(
                         getApplicationContext(),
                         Login.class);
+                startActivity(intent);
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(
+                        getApplicationContext(),
+                        MainActivity.class);
                 startActivity(intent);
             }
         });
