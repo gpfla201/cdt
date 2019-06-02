@@ -378,6 +378,18 @@
             android:text="한국외대 글로벌캠퍼스 주변 단기 임대합니다." />
 
 
+        <fragment
+
+            android:id="@+id/map"
+
+            android:name="com.naver.maps.map.MapFragment"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="400dp" />
+
+
+
 
 
         <Button
