@@ -1,6 +1,7 @@
 package com.hufs.cdt;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -101,13 +102,16 @@ public class MainActivity extends AppCompatActivity {
                                     View view, int position, long id) {
 
                 //클릭한 아이템의 문자열을 가져옴
-                String selected_item = (String)adapterView.getItemAtPosition(position);
+                //String selected_item = (String)adapterView.getItemAtPosition(position);
 
-                TextView address=(TextView)findViewById(R.id.textTitle) ;
+
+                TextView address=(TextView)findViewById(R.id.textTitle);
                 String s= address.getText().toString();
+
                 //텍스트뷰에 출력
                 Intent intent= new Intent(MainActivity.this,FindView.class);
                 intent.putExtra("addressname",s);
+                Log.e("넘어가는 주소는",s);
                 startActivityForResult(intent,0);
             }
         });

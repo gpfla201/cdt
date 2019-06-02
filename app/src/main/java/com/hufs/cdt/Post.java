@@ -80,6 +80,7 @@ public class Post extends AppCompatActivity {
     Button send;
     public static final String id=Mypage.strEmail;
     public static String jibunadd, roadadd;
+    public static String xx,yy;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -191,7 +192,8 @@ public class Post extends AppCompatActivity {
                         String ndate=date.getText().toString();
                         String ipju=Checked();
                         String roomkind=Checkedd();
-                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind);
+
+                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind,xx,yy);
 
                         Map<String, Object> postValues = mypost.toMap();
                         Map<String, Object> childUpdates = new HashMap<>();
@@ -609,6 +611,7 @@ public class Post extends AppCompatActivity {
                     double y=subJsonObject.getDouble("y");
                     String k= String.valueOf(x);
                     String w= String.valueOf(y);
+                    setxy(k,w);
                     String aqw=jibun+"\n"+road+"\n"+k+"\n"+w;
                     Message message = mHandler.obtainMessage(LOAD_SUCCESS,aqw);
                     mHandler.sendMessage(message);
@@ -677,4 +680,14 @@ public class Post extends AppCompatActivity {
         return resultText;
     }
 
+    public void setxy(String ax,String ay){
+        xx=ax;
+        yy=ay;
+    }
+    public String getx(){
+        return xx;
+    }
+    public String gety(){
+        return yy;
+    }
 }

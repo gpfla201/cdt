@@ -22,11 +22,13 @@ public class makepost {
     public String date;
     public String ipju;
     public String roomkind;
+    public String x;
+    public String y;
 
     public makepost(){
     }
 
-    public  makepost(String id,String mykey, String address,String jibunadd, String speceficaddress,String price,String floor,String room, String option, String guan, String parking, String seol,String date,String ipju,String roomkind ){
+    public  makepost(String id,String mykey, String address,String jibunadd, String speceficaddress,String price,String floor,String room, String option, String guan, String parking, String seol,String date,String ipju,String roomkind , String x, String y){
         this.id=id;
         this.mykey=mykey;
         this.address=address;
@@ -42,6 +44,8 @@ public class makepost {
         this.date=date;
         this.ipju=ipju;
         this.roomkind=roomkind;
+        this.x=x;
+        this.y=y;
     }
 
     @Exclude
@@ -63,6 +67,8 @@ public class makepost {
         result.put("date",date);
         result.put("ipju",ipju);
         result.put("roomkind",roomkind);
+        result.put("x",x);
+        result.put("y",y);
         return result;
     }
 }

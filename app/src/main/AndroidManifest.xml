@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hufs.cdt">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".App"
@@ -14,8 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".search_result_list"></activity>
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,17 +30,15 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="5e7ce2cdb889e93f04348b2e054f47e4" />
 
-        <activity android:name=".Post"/>
-        <activity android:name=".Mypage"/>
+        <activity android:name=".Post" />
+        <activity android:name=".Mypage" />
         <activity android:name=".Search_result" />
-        <activity android:name=".FindView"/>
-        <activity android:name=".Review"/>
-        <activity android:name=".Login"/>
-        <activity android:name=".GetImageActivity"/>
-        <activity android:name=".StartActivity"/>
-        <activity android:name=".ChatActivity"/>
-
-
+        <activity android:name=".FindView" />
+        <activity android:name=".Review" />
+        <activity android:name=".Login" />
+        <activity android:name=".GetImageActivity" />
+        <activity android:name=".StartActivity" />
+        <activity android:name=".ChatActivity" />
     </application>
 
 </manifest>

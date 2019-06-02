@@ -40,12 +40,12 @@ public class FindView extends AppCompatActivity {
     String seol;//설명
     String roomid;//작성자 Id
     String room;
+    String x;
+    String y;
     TextView aid ,ajibunaddr, aspec, aprice, afloor , aroom, aoption, aguan, aparking, adate, aipju, aroomkind, aseol;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_view);
-
-
 
 
         test=(EditText)findViewById(R.id.test);
@@ -97,6 +97,8 @@ public class FindView extends AppCompatActivity {
                 seol = dataSnapshot.child("seol").getValue(String.class);
                 ipju=dataSnapshot.child("ipju").getValue(String.class);
                 roomid=dataSnapshot.child("uid").getValue(String.class);
+                x=dataSnapshot.child("x").getValue(String.class);
+                y=dataSnapshot.child("y").getValue(String.class);
                 putThing(room, jibun, specefic, price, floor, option, guan, parking, date, ipju, roomkind, seol, roomid);
             }
 
