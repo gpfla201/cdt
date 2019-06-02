@@ -21,6 +21,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -74,7 +76,7 @@ public class Post extends AppCompatActivity {
     //firebase에서 DB를 받아오는 부분입니다.
     public static DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     public DatabaseReference conditionRef = mRootRef.child("posting").push();
-    EditText aaddress,price, floor, room, option, guan, parking,seol,speadd;
+    EditText aaddress,price, floor, room, option, guan, parking,seol,speadd,date;
     Button send;
     public static final String id=Mypage.strEmail;
     public static String jibunadd, roadadd;
@@ -85,6 +87,41 @@ public class Post extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
 
+        findViewById(R.id.checkBox).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Checked();
+            }
+        });
+
+        findViewById(R.id.checkBox2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Checked();
+            }
+        });
+
+        findViewById(R.id.checkBox4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Checkedd();
+            }
+        });
+
+        findViewById(R.id.checkBox5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Checkedd();
+            }
+        });
+
+        findViewById(R.id.checkBox6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Checkedd();
+            }
+        });
+
         aaddress=(EditText)findViewById(R.id.editText);
         price=(EditText)findViewById(R.id.editText6);
         floor=(EditText)findViewById(R.id.editText2);
@@ -94,9 +131,8 @@ public class Post extends AppCompatActivity {
         parking=(EditText)findViewById(R.id.editText1);
         seol=(EditText)findViewById(R.id.editText7);
         speadd=(EditText)findViewById(R.id.specefic);
+        date=(EditText)findViewById(R.id.editText8);
         send=(Button)findViewById(R.id.post_btn);
-
-
 
 
 
@@ -113,7 +149,6 @@ public class Post extends AppCompatActivity {
 
                 thrun();
                 getJSON();
-
 
             }
 
@@ -153,8 +188,10 @@ public class Post extends AppCompatActivity {
                         String nguan=guan.getText().toString();
                         String nparking=parking.getText().toString();
                         String nseol=seol.getText().toString();
-
-                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol);
+                        String ndate=date.getText().toString();
+                        String ipju=Checked();
+                        String roomkind=Checkedd();
+                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind);
 
                         Map<String, Object> postValues = mypost.toMap();
                         Map<String, Object> childUpdates = new HashMap<>();
@@ -169,7 +206,8 @@ public class Post extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(), "게시글이 올라갔습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), FindView.class);
-                        startActivity(intent);
+                        intent.putExtra("addressname",naddress);
+                        startActivityForResult(intent,0);
                         finish();
                     }
                 });
@@ -599,7 +637,44 @@ public class Post extends AppCompatActivity {
     public String getRoadadd(){
         return roadadd;
     }
-    public String getmyid(){
-        return id;
+
+
+    public  String Checked(){
+        CheckBox checkBox=(CheckBox)findViewById(R.id.checkBox);
+        CheckBox checkBox2=(CheckBox)findViewById(R.id.checkBox2);
+
+
+        String resultText = "";
+
+        if(checkBox.isChecked()){
+            resultText=checkBox.getText().toString();
+        }
+        if(checkBox2.isChecked()){
+            resultText=checkBox2.getText().toString();
+        }
+
+        return resultText;
     }
+
+    public  String Checkedd(){
+
+        CheckBox checkBox4=(CheckBox)findViewById(R.id.checkBox4);
+        CheckBox checkBox5=(CheckBox)findViewById(R.id.checkBox5);
+        CheckBox checkBox6=(CheckBox)findViewById(R.id.checkBox6);
+
+        String resultText = "";
+
+        if(checkBox4.isChecked()){
+
+            resultText=checkBox4.getText().toString();
+        }
+        if(checkBox5.isChecked()){
+            resultText=checkBox5.getText().toString();
+        }
+        if(checkBox6.isChecked()){
+            resultText=checkBox6.getText().toString();
+        }
+        return resultText;
+    }
+
 }

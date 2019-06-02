@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class makepost {
+
     public String mykey;
     public String id;
     public String address;
@@ -18,11 +19,14 @@ public class makepost {
     public String guan;
     public String parking;
     public String seol;
+    public String date;
+    public String ipju;
+    public String roomkind;
 
     public makepost(){
     }
 
-    public  makepost(String id,String mykey, String address,String jibunadd, String speceficaddress,String price,String floor,String room, String option, String guan, String parking, String seol){
+    public  makepost(String id,String mykey, String address,String jibunadd, String speceficaddress,String price,String floor,String room, String option, String guan, String parking, String seol,String date,String ipju,String roomkind ){
         this.id=id;
         this.mykey=mykey;
         this.address=address;
@@ -35,6 +39,9 @@ public class makepost {
         this.guan=guan;
         this.parking=parking;
         this.seol=seol;
+        this.date=date;
+        this.ipju=ipju;
+        this.roomkind=roomkind;
     }
 
     @Exclude
@@ -53,6 +60,9 @@ public class makepost {
         result.put("guan",guan);
         result.put("parking",parking);
         result.put("seol",seol);
+        result.put("date",date);
+        result.put("ipju",ipju);
+        result.put("roomkind",roomkind);
         return result;
     }
 }

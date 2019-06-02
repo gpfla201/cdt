@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
 
                     String myaddress = fileSnapshot.child("address").getValue(String.class);
+                    String spece= fileSnapshot.child("specefic").getValue(String.class);
+                    myaddress=myaddress+" "+spece;
                     String price = fileSnapshot.child("price").getValue(String.class);
                     //받아온 주소랑 가격을 받아옴
                     myItem=new ItemData();
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         getApplicationContext(),
                         Post.class);
                 startActivity(intent);
+
             }
         });
 
@@ -134,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                         getApplicationContext(),
                         Mypage.class);
                 startActivity(intent);
+
             }
         });
 
@@ -144,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                         getApplicationContext(),
                         Search_result.class);
                 startActivity(intent);
+
             }
         });
 

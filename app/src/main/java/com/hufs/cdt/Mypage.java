@@ -10,14 +10,18 @@ import android.widget.TextView;
 
 
 public class Mypage extends AppCompatActivity{
+
     public static String strEmail;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage);
+
         Intent intent= getIntent();
         strEmail = intent.getStringExtra("email");
+
         TextView textView=(TextView)findViewById(R.id.login_id);
-        textView.setText(strEmail);
+        textView.setText(getmyid());
 
 
         Button post_btn1 = (Button)findViewById(R.id.post_btn1);
@@ -30,7 +34,8 @@ public class Mypage extends AppCompatActivity{
             public void onClick(View view) {
                 Intent intent = new Intent(
                         getApplicationContext(),
-                        FindView.class);
+                        MainActivity.class);
+
                 startActivity(intent);
             }
         });
@@ -44,5 +49,9 @@ public class Mypage extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+    }
+
+    public static final String getmyid(){
+        return strEmail;
     }
 }
