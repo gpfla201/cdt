@@ -3,6 +3,7 @@ package com.hufs.cdt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,10 +17,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraUpdate;
+import com.naver.maps.map.MapFragment;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.overlay.Marker;
 
 import java.util.ArrayList;
 
-public class FindView extends AppCompatActivity {
+public class FindView extends AppCompatActivity implements OnMapReadyCallback {
 
     private EditText test;
 
@@ -73,6 +80,27 @@ public class FindView extends AppCompatActivity {
         myaddresss=intent.getStringExtra("addressname");
         myaddress.setText(myaddresss);
         addr=myaddresss;
+        MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
+
+
+        if (mapFragment == null) {
+
+            mapFragment = MapFragment.newInstance();
+
+            getSupportFragmentManager().beginTransaction().add(R.id.map, mapFragment).commit();
+
+        }
+
+
+
+
+
+        mapFragment.getMapAsync(this);
+
+
+
+
 
 
         //firebase에서 게시글을 받아올 것입니다.
@@ -149,6 +177,29 @@ public class FindView extends AppCompatActivity {
 
 
     }
+    @UiThread
+
+    @Override
+
+    public void onMapReady ( @NonNull final NaverMap naverMap){
+        double xandyx=Double.parseDouble(x);
+        double xandyy=Double.parseDouble(y);
+
+        final Marker marker1 = new Marker();
+        LatLng k = new LatLng((double) xandyy, (double) xandyx);
+
+        marker1.setPosition(k);
+
+        marker1.setMap(naverMap);
+
+        naverMap.moveCamera(CameraUpdate.scrollTo(k));
+
+
+
+
+    }
+
+
     //글들을 폼에 넣는 것입니다.
     public void putThing(String room, String jibun,String specefic, String price, String floor, String option, String guan, String parking, String date, String ipju, String roomkind, String seol, String roomid){
         aid.setText(roomid);
