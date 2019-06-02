@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 //String selected_item = (String)adapterView.getItemAtPosition(position);
 
 
-                TextView address=(TextView)findViewById(R.id.textTitle);
+                TextView address=(TextView)view.findViewById(R.id.textTitle);
                 String s= address.getText().toString();
 
                 //텍스트뷰에 출력
