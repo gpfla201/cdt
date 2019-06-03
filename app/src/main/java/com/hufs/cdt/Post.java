@@ -210,43 +210,13 @@ public class Post extends AppCompatActivity {
                         String roomkind=Checkedd();
 
 
-                        //사진을 Storage에 넣는 부분입니다.
-                        ImageView imageView = findViewById(R.id.room_img);
-
-                        // Get the data from an ImageView as bytes
-                        imageView.setDrawingCacheEnabled(true);
-                        imageView.buildDrawingCache();
-                        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                        byte[] data = baos.toByteArray();
-
-                        mountainsRef = storageRef.child(naddress+".jpg");
-                        UploadTask uploadTask = mountainsRef.putBytes(data);
-
-                        String imageUrl = mountainsRef.getPath();
-
-                        uploadTask.addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                // Handle unsuccessful uploads
-                            }
-                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                                // ...
-                            }
-                        });
 
 
 
 
 
 
-
-
-                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind,xx,yy,imageUrl);
+                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind,xx,yy);
 
                         Map<String, Object> postValues = mypost.toMap();
                         Map<String, Object> childUpdates = new HashMap<>();
