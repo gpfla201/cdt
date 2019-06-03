@@ -6,10 +6,7 @@
 
 ## 2019년 4월 30일
 - 사업계획서, 요구사항 정의서 추가
-![Listview](./image/Listview.jpg)
-
-## 2019년 5월 1일
-- 달력시도
+![listview](./screenshot/listview.jpg)
 
 ## 2019년 5월 13일
 - 카카오로그인, 네이버맵스 통합완료.
