@@ -6,7 +6,7 @@
 
 ## 2019년 4월 30일
 - 사업계획서, 요구사항 정의서 추가
-![listview](./screenshot/listview.jpg)
+![listview](./screenshot/listview.JPG)
 
 
 
