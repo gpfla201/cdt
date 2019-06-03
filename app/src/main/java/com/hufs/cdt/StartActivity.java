@@ -40,18 +40,18 @@ public class StartActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String chat_name=intent.getStringExtra("chatName");
-        //final String name = intent.getStringExtra("userName");
+        final String name = intent.getStringExtra("userName");
         user_chat.setText(chat_name);
-        //user_edit.setText(name);
+        user_edit.setText(name);
         user_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (chat_name.equals("") || user_edit.getText().toString().equals(""))
+                if (chat_name.equals("") || name.equals(""))
                     return;
 
                 Intent intent = new Intent(StartActivity.this, ChatActivity.class);
                 intent.putExtra("chatName", chat_name);
-                intent.putExtra("userName", user_edit.getText().toString());
+                intent.putExtra("userName", name);
                 startActivity(intent);
             }
         });
