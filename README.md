@@ -6,12 +6,21 @@
 
 ## 2019년 4월 30일
 - 사업계획서, 요구사항 정의서 추가
+
+
 ![listview](./screenshot/listview.JPG)
+
 
 - 리스트뷰
 
 ## 2019년 5월 13일
-- 카카오로그인, 네이버맵스 통합완료.
+- 카카오로그인 완료
+
+![login](./screenshot/login.PNG)
+
+-네이버 Maps 완료
+
+![map](./screenshot/map.JPG)
 
 ## 2019년 5월 19일
 - 메세지 database 연동
@@ -23,6 +32,8 @@
 ## 2019년 6월 1일 
 - 도로명, 지번 주소 불러오기 성공
 - 리스트뷰 정보 제공 가능
+
+![roadandjibun](./screenshot/roadandjibun.JPG)
 
 ## 2019년 6월 2일
 - 상세 글 보기 가능
