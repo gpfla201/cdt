@@ -46,6 +46,8 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = getIntent();
         CHAT_NAME = intent.getStringExtra("chatName");
         USER_NAME = intent.getStringExtra("userName");
+        Log.d("넘어d온 아이디1",CHAT_NAME);
+        Log.d("넘어온 아이디 그냥 아이디1",USER_NAME);
 
 
 

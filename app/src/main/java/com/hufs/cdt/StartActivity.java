@@ -40,18 +40,22 @@ public class StartActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String chat_name=intent.getStringExtra("chatName");
-        final String name = intent.getStringExtra("userName");
+        //final String name = intent.getStringExtra("userName");
         user_chat.setText(chat_name);
-        user_edit.setText(name);
+        //user_edit.setText(name);
+        //final String name=user_edit.getText().toString();
+
         user_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (chat_name.equals("") || name.equals(""))
+                if (chat_name.equals("") || user_edit.getText().toString().equals(""))
                     return;
 
+                Log.d("넘어가는 아이디1",chat_name);
+               // Log.d("넘어가는 아이디 그냥 아이디1",name);
                 Intent intent = new Intent(StartActivity.this, ChatActivity.class);
                 intent.putExtra("chatName", chat_name);
-                intent.putExtra("userName", name);
+                intent.putExtra("userName", user_edit.getText().toString());
                 startActivity(intent);
             }
         });
