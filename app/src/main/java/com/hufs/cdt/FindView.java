@@ -49,6 +49,7 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
     String room;
     String x;
     String y;
+    String nadd;
     TextView aid ,ajibunaddr, aspec, aprice, afloor , aroom, aoption, aguan, aparking, adate, aipju, aroomkind, aseol;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +128,7 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
                 roomid=dataSnapshot.child("uid").getValue(String.class);
                 x=dataSnapshot.child("x").getValue(String.class);
                 y=dataSnapshot.child("y").getValue(String.class);
+                nadd=addr+" " +specefic;
                 putThing(room, jibun, specefic, price, floor, option, guan, parking, date, ipju, roomkind, seol, roomid);
             }
 
@@ -162,12 +164,13 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
 
         call_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                String id = test.getText().toString();
-                String name = "혜선";
-
+                String id = nadd;
+                //String name = "혜선";
+                Log.d("넘어가는 아이디",nadd);
+                Log.d("넘어가는 아이디 그냥 아이디",id);
                 Intent intent = new Intent(FindView.this, StartActivity.class);
                 intent.putExtra("chatName", id);
-                intent.putExtra("userName", name);
+                //intent.putExtra("userName", name);
                 startActivity(intent);
             }
         });

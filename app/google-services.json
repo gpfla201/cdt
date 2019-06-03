@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1022128990887-0i62bam0sjhgp6prjqpg1lqrrbejef6m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hufs.cdt",
+            "certificate_hash": "9a03afc6e9070050b25d500a4d8ab13f78205fd8"
+          }
+        },
+        {
           "client_id": "1022128990887-8gk6lago88vp0hcjj0ec5rootficgoek.apps.googleusercontent.com",
           "client_type": 3
         }

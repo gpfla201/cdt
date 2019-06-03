@@ -24,11 +24,12 @@ public class makepost {
     public String roomkind;
     public String x;
     public String y;
+    public String img;//이미지 유알엘
 
     public makepost(){
     }
 
-    public  makepost(String id,String mykey, String address,String jibunadd, String speceficaddress,String price,String floor,String room, String option, String guan, String parking, String seol,String date,String ipju,String roomkind , String x, String y){
+    public  makepost(String id,String mykey, String address,String jibunadd, String speceficaddress,String price,String floor,String room, String option, String guan, String parking, String seol,String date,String ipju,String roomkind , String x, String y,String img){
         this.id=id;
         this.mykey=mykey;
         this.address=address;
@@ -46,6 +47,7 @@ public class makepost {
         this.roomkind=roomkind;
         this.x=x;
         this.y=y;
+        this.img=img;
     }
 
     @Exclude
@@ -69,6 +71,7 @@ public class makepost {
         result.put("roomkind",roomkind);
         result.put("x",x);
         result.put("y",y);
+        result.put("imgurl",img);
         return result;
     }
 }

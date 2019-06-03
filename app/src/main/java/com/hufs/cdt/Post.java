@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
@@ -28,8 +30,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -38,6 +45,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,11 +89,20 @@ public class Post extends AppCompatActivity {
     public static final String id=Mypage.strEmail;
     public static String jibunadd, roadadd;
     public static String xx,yy;
+    //이미지를 넣기위해 스토리지를 만드는 부분입니다.
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    // Create a storage reference from our app
+    StorageReference storageRef = storage.getReference();
+
+    // Create a reference to "mountains.jpg"
+    StorageReference mountainsRef;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
+
 
 
         findViewById(R.id.checkBox).setOnClickListener(new View.OnClickListener() {
@@ -167,8 +184,7 @@ public class Post extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String ok="ok";
-                        Log.d("내아이디",ok);
+
 
                         //DB넣는부분입니다
                         //
@@ -193,7 +209,44 @@ public class Post extends AppCompatActivity {
                         String ipju=Checked();
                         String roomkind=Checkedd();
 
-                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind,xx,yy);
+
+                        //사진을 Storage에 넣는 부분입니다.
+                        ImageView imageView = findViewById(R.id.room_img);
+
+                        // Get the data from an ImageView as bytes
+                        imageView.setDrawingCacheEnabled(true);
+                        imageView.buildDrawingCache();
+                        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                        byte[] data = baos.toByteArray();
+
+                        mountainsRef = storageRef.child(naddress+".jpg");
+                        UploadTask uploadTask = mountainsRef.putBytes(data);
+
+                        String imageUrl = mountainsRef.getPath();
+
+                        uploadTask.addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle unsuccessful uploads
+                            }
+                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                                // ...
+                            }
+                        });
+
+
+
+
+
+
+
+
+                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind,xx,yy,imageUrl);
 
                         Map<String, Object> postValues = mypost.toMap();
                         Map<String, Object> childUpdates = new HashMap<>();

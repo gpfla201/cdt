@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollView2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
 
     <LinearLayout
@@ -24,7 +25,7 @@
             <TextView
                 android:id="@+id/search_key"
                 android:layout_width="wrap_content"
-                android:layout_height="47dp"
+                android:layout_height="570dp"
                 android:layout_weight="3"
                 android:gravity="center_vertical"
                 android:text="방 자세히 보기"
@@ -52,11 +53,7 @@
                 android:text="리뷰쓰기" />
 
 
-
-
-
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -68,7 +65,6 @@
             android:layout_gravity="center"
 
             android:orientation="vertical">
-
 
 
             <TextView
@@ -88,7 +84,6 @@
                 android:textColor="#090808"
 
                 android:textSize="30sp" />
-
 
 
             <ImageView
@@ -138,16 +133,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="" />
+
         <TextView
             android:id="@+id/specefic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView1"
@@ -168,11 +163,11 @@
                 android:text="월세 100/90" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView2"
@@ -193,11 +188,11 @@
                 android:text="1층" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView3"
@@ -218,11 +213,11 @@
                 android:text="24평" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView4"
@@ -243,11 +238,11 @@
                 android:text="세탁기, 냉장고, 에어컨 있음" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView5"
@@ -268,11 +263,11 @@
                 android:text="없음" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView6"
@@ -293,11 +288,11 @@
                 android:text="없음" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView7"
@@ -317,11 +312,11 @@
                 android:inputType="textPersonName" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView8"
@@ -389,9 +384,6 @@
             android:layout_height="400dp" />
 
 
-
-
-
         <Button
 
             android:id="@+id/call_btn"
@@ -411,7 +403,6 @@
 
             android:layout_height="wrap_content"
             android:text="홈으로 돌아가기" />
-
 
 
     </LinearLayout>
