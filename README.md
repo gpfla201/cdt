@@ -16,7 +16,7 @@
 ## 2019년 5월 13일
 - 카카오로그인 완료
 
-![login](./screenshot/login.PNG)
+![login](./screenshot/login.png)
 
 -네이버 Maps 완료
 
@@ -33,7 +33,7 @@
 - 도로명, 지번 주소 불러오기 성공
 - 리스트뷰 정보 제공 가능
 
-![roadandjibun](./screenshot/roadandjibun.JPG)
+![roadandjibun](./screenshot/roadandjibun.jpg)
 
 ## 2019년 6월 2일
 - 상세 글 보기 가능
