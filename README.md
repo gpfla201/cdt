@@ -1,10 +1,10 @@
 # cdt 신주민 앱
 
 ### 2019 한국외대 종합설계 4팀 CDT
-- 이태규 (팀장): Android 총괄 개발, firebase realtime DB 활용 게시글 posting, 검색, 내가 쓴 글 보기
-- 류권환 (팀원): Kakao Login API활용 Login기능, Naver Maps API 활용 게시글 위치 확인, 게시글 작성 시 정확한 주소를 위한 지번주소, 도로명주소, 위도, 경도
-- 윤혜선 (팀원): Android 클라이언트 기능 및 UI 제작 게시글 권한 API 를 이용한 사진 등록
-- 박혜림 (팀원): Android 클라이언트 기능 및 UI 제작 FirebaseDB 를 이용한 Chat기능
+- 이태규,깃헙 아이디: bryan9512 (팀장): Android 총괄 개발, firebase realtime DB 활용 게시글 posting, 검색, 내가 쓴 글 보기
+- 류권환,깃헙 아이디: juoo2 (팀원): Kakao Login API활용 Login기능, Naver Maps API 활용 게시글 위치 확인, 게시글 작성 시 정확한 주소를 위한 지번주소, 도로명주소, 위도, 경도
+- 윤혜선,깃헙 아이디: xhtlfdl93999 (팀원): Android 클라이언트 기능 및 UI 제작 게시글 권한 API 를 이용한 사진 등록
+- 박혜림,깃헙 아이디: gpfla201 (팀원): Android 클라이언트 기능 및 UI 제작 FirebaseDB 를 이용한 Chat기능
 
 
 ## 2019년 4월 29일
