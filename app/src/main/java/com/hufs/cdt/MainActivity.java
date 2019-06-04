@@ -1,13 +1,11 @@
 package com.hufs.cdt;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,11 +14,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Button post_btn2 = (Button)findViewById(R.id.post_btn1);
         Button mypage_btn = (Button)findViewById(R.id.mypage_btn);
         Button search_tv = (Button)findViewById(R.id.search_tv);
-        Button msg_btn = (Button)findViewById(R.id.msg_btn);
+        Button search_tv1 = (Button)findViewById(R.id.search_tv1);
 
 
 
@@ -119,10 +115,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
         post_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,15 +148,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        msg_btn.setOnClickListener(new View.OnClickListener() {
+        search_tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(
                         getApplicationContext(),
-                        StartActivity.class);
+                        Search_result.class);
                 startActivity(intent);
+
             }
         });
+
 
 
     }
