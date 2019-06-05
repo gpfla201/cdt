@@ -53,7 +53,7 @@
             android:textSize="23sp" />
 
         <EditText
-            android:id="@+id/price"
+            android:id="@+id/hopeprice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -214,21 +214,21 @@
 
 
         <CheckBox
-            android:id="@+id/checkBox4"
+            android:id="@+id/oneroom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="원룸" />
 
         <CheckBox
-            android:id="@+id/checkBox5"
+            android:id="@+id/tworoom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="투룸" />
 
         <CheckBox
-            android:id="@+id/checkBox6"
+            android:id="@+id/etcroom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

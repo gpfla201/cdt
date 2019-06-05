@@ -49,6 +49,7 @@ public class Mypage extends AppCompatActivity{
         else{
             logout.setVisibility(View.GONE);
             signout.setVisibility(View.GONE);
+            selectoption.setVisibility(View.GONE);
         }
 
 
