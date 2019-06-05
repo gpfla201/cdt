@@ -46,7 +46,10 @@ public class Mypage extends AppCompatActivity{
             logtx.setText("로그인 완료");
             ; //로그아웃 Toast 메세지
         }
-
+        else{
+            logout.setVisibility(View.GONE);
+            signout.setVisibility(View.GONE);
+        }
 
 
         post_btn1.setOnClickListener(new View.OnClickListener() {
