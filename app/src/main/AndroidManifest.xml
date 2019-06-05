@@ -40,6 +40,7 @@
         <activity android:name=".StartActivity"/>
         <activity android:name=".ChatActivity"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".option"/>
 
     </application>
 
