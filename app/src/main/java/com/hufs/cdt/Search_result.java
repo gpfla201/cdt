@@ -121,6 +121,8 @@ public class Search_result extends AppCompatActivity{
             }
         });
 
+
+
     }
 
 

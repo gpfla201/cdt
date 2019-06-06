@@ -12,6 +12,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="게시글을 작성해주세요" />
+
         <ImageView
             android:id="@+id/room_img"
             android:layout_width="369dp"
@@ -27,12 +33,22 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:text="사진선택"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:background="@drawable/mypage_btn"/>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="#32111010" />
 
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/textView"
@@ -41,6 +57,7 @@
                 android:layout_gravity="center"
                 android:text="주소"
                 android:textColor="#111010"
+                android:background="#11111010"
                 android:textSize="23sp" />
 
             <EditText
@@ -49,13 +66,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="경기도 용인시 모현면" />
+                android:inputType="textPersonName" />
+
             <Button
                 android:id="@+id/adsearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:background="@drawable/mypage_btn"
                 android:text="검색"
                 android:textSize="10sp" />
 
@@ -64,15 +82,19 @@
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="369dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="" />
+            android:text=""
+            android:layout_gravity="center"/>
+
         <EditText
             android:id="@+id/specefic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_width="369dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:hint="상세주소를 입력해주세요." />
+
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="40dp"
@@ -85,6 +107,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:text="가격"
+                android:background="#11111010"
                 android:textColor="#111010"
                 android:textSize="23sp" />
 
@@ -94,8 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="월세 100/90" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
         <LinearLayout
@@ -110,6 +132,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:text="층수"
+                android:background="#11111010"
                 android:textColor="#111010"
                 android:textSize="23sp" />
 
@@ -119,8 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="1층" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
         <LinearLayout
@@ -135,6 +157,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:text="방크기"
+                android:background="#11111010"
                 android:textColor="#111010"
                 android:textSize="23sp" />
 
@@ -144,8 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="24평" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
         <LinearLayout
@@ -159,6 +181,7 @@
                 android:layout_width="110dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
+                android:background="#11111010"
                 android:text="옵션"
                 android:textColor="#111010"
                 android:textSize="23sp" />
@@ -166,11 +189,10 @@
             <EditText
                 android:id="@+id/editText4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="세탁기, 냉장고, 에어컨 있음" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
         <LinearLayout
@@ -185,6 +207,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:text="관리비"
+                android:background="#11111010"
                 android:textColor="#111010"
                 android:textSize="23sp" />
 
@@ -194,8 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="없음" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
         <LinearLayout
@@ -210,6 +232,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:text="주차비"
+                android:background="#11111010"
                 android:textColor="#111010"
                 android:textSize="23sp" />
 
@@ -219,8 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="없음" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
         <LinearLayout
@@ -235,6 +257,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:text="임대기간"
+                android:background="#11111010"
                 android:textColor="#111010"
                 android:textSize="23sp" />
 
@@ -258,9 +281,9 @@
                 android:layout_width="110dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:text="입주가능일"
                 android:textColor="#111010"
+                android:background="#11111010"
                 android:textSize="23sp" />
 
             <CheckBox
@@ -281,17 +304,16 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_width="369dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="110dp"
                 android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="     방 종류"
+                android:text="방 종류"
+                android:background="#11111010"
                 android:textColor="#111010"
                 android:textSize="23sp" />
 
@@ -300,21 +322,18 @@
                 android:id="@+id/checkBox4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="원룸" />
 
             <CheckBox
                 android:id="@+id/checkBox5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="투룸" />
 
             <CheckBox
                 android:id="@+id/checkBox6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="기타" />
         </LinearLayout>
 
@@ -325,8 +344,9 @@
             android:layout_gravity="center"
             android:background="@null"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="한국외대 글로벌캠퍼스 주변 단기 임대합니다." />
+            android:layout_margin="20dp"
+            android:hint="방에 대한 상세내용을 설명해주세요."
+            android:inputType="textPersonName" />
 
 
 
@@ -335,7 +355,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="open"
-            android:text="확인" />
+            android:text="확인"
+            android:background="@drawable/mypage_btn"/>
 
 
     </LinearLayout>

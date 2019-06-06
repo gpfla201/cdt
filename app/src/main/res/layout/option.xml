@@ -11,6 +11,15 @@
         android:textAlignment="center"
         android:textSize="20pt"
         android:text="옵션 선택" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#32111010" />
+
     <LinearLayout
         android:layout_width="369dp"
         android:layout_height="40dp"
@@ -22,6 +31,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:text="위치"
+            android:background="#11111010"
             android:textColor="#111010"
             android:textSize="23sp" />
 
@@ -49,6 +59,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:text="가격"
+            android:background="#11111010"
             android:textColor="#111010"
             android:textSize="23sp" />
 
@@ -75,6 +86,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:text="옵션"
+            android:background="#11111010"
             android:textColor="#111010"
             android:textSize="23sp" />
 
@@ -100,6 +112,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:text="관리비"
+            android:background="#11111010"
             android:textColor="#111010"
             android:textSize="23sp" />
 
@@ -126,6 +139,7 @@
             android:layout_gravity="center"
             android:text="주차공간"
             android:textColor="#111010"
+            android:background="#11111010"
             android:textSize="23sp" />
         <CheckBox
             android:id="@+id/parkingyes"
@@ -154,6 +168,7 @@
             android:layout_gravity="center"
             android:text="임대기간"
             android:textColor="#111010"
+            android:background="#11111010"
             android:textSize="23sp" />
 
         <EditText
@@ -176,8 +191,8 @@
             android:layout_width="110dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:text="입주가능일"
+            android:background="#11111010"
             android:textColor="#111010"
             android:textSize="23sp" />
 
@@ -199,16 +214,17 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_width="369dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="110dp"
             android:layout_height="40dp"
-
-            android:text="      방 종류"
+            android:background="#11111010"
+            android:text="방 종류"
             android:textColor="#111010"
             android:textSize="23sp" />
 

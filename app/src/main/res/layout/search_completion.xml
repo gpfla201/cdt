@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical">
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
         android:orientation="horizontal">
 
         <EditText
@@ -20,7 +19,7 @@
             android:layout_width="262dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:hint="지역입력하세요"
+            android:hint="원하는 지역을 입력해주세요."
             android:textSize="25dp" />
 
         <Button
@@ -28,6 +27,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/mypage_btn"
             android:text="검색" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="추천지역" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="한국외국어대학교 글로벌캠퍼스" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="용인시 처인구" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="에버랜드" />
+    </LinearLayout>
+
 </LinearLayout>

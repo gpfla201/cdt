@@ -95,12 +95,7 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
 
 
 
-
-
         mapFragment.getMapAsync(this);
-
-
-
 
 
 
@@ -139,17 +134,6 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
         });
 
 
-        review_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(
-                        getApplicationContext(),
-                        Review.class);
-
-                startActivity(intent);
-
-            }
-        });
 
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
