@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -118,11 +119,15 @@ public class MainActivity extends AppCompatActivity {
         post_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(Mypage.strEmail!=null){
                 Intent intent = new Intent(
                         getApplicationContext(),
                         Post.class);
                 startActivity(intent);
-
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show(); //로그아웃 Toast 메세지
+                }
             }
         });
 
