@@ -163,7 +163,7 @@ public class Login extends AppCompatActivity {
                             intent.putExtra("birthday", result.getKakaoAccount().getBirthday()); //생일 정보가 있다면 -> 생일 정보를 String으로 변환해서 넘겨줌
                         else
                             intent.putExtra("birthday", "none");
-
+                        Mypage.islogin=true;
                         startActivity(intent);
                         finish();
                     }

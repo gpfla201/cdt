@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.LoginFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,18 +20,23 @@ import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 
 
 public class Mypage extends AppCompatActivity{
-
+    static boolean islogin=false;
     public static String strEmail;
-
+    TextView logtx;
+    TextView textView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage);
-
         Intent intent= getIntent();
-        strEmail = intent.getStringExtra("email");
-        final TextView logtx=(TextView)findViewById(R.id.login_tx);
 
-        TextView textView=(TextView)findViewById(R.id.login_id);
+        if(islogin==true && strEmail==null) {
+            //로그인 유지
+            strEmail = intent.getStringExtra("email");
+            islogin=false;
+        }
+        logtx=(TextView)findViewById(R.id.login_tx);
+
+        textView=(TextView)findViewById(R.id.login_id);
 
 
 
@@ -100,7 +106,9 @@ public class Mypage extends AppCompatActivity{
         logout.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getApplicationContext(), "정상적으로 로그아웃되었습니다.", Toast.LENGTH_SHORT).show(); //로그아웃 Toast 메세지
+                strEmail=null;
 
                 //실제 로그아웃 처리
                 UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
@@ -109,6 +117,7 @@ public class Mypage extends AppCompatActivity{
                         //로그아웃에 성공하면: LoginActivity로 이동
                         Intent intent = new Intent(Mypage.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                         startActivity(intent);
                     }
                 });
@@ -125,6 +134,7 @@ public class Mypage extends AppCompatActivity{
                             @Override
                             public void onClick(DialogInterface dialog, int which) { //"네" 버튼 클릭 시 -> 회원탈퇴 수행
                                 //회원탈퇴 수행
+                                strEmail=null;
                                 UserManagement.getInstance().requestUnlink(new UnLinkResponseCallback() {
                                     @Override
                                     public void onFailure(ErrorResult errorResult) { //회원탈퇴 실패 시
