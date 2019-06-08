@@ -26,7 +26,10 @@ allprojects {
             url 'https://navercorp.bintray.com/maps' }
         //카카오 로그인
         maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
-        
+        maven {
+            name 'glide-snapshot'
+            url 'http://oss.sonatype.org/content/repositories/snapshots'
+        }
     }
 }
 

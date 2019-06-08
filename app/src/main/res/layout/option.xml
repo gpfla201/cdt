@@ -126,60 +126,7 @@
             android:text="없음" />
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="369dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        >
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="110dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:text="주차공간"
-            android:textColor="#111010"
-            android:background="#11111010"
-            android:textSize="23sp" />
-        <CheckBox
-            android:id="@+id/parkingyes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="있음" />
-
-        <CheckBox
-            android:id="@+id/parkingno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="없음" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="369dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        >
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="110dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:text="임대기간"
-            android:textColor="#111010"
-            android:background="#11111010"
-            android:textSize="23sp" />
-
-        <EditText
-            android:id="@+id/period"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="369dp"
         android:layout_height="40dp"
@@ -250,6 +197,12 @@
             android:layout_weight="1"
             android:text="기타" />
     </LinearLayout>
-
+<Button
+    android:id="@+id/search_match"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:text="맞춤 검색"
+    android:onClick="searchmatch"/>
 
 </LinearLayout>

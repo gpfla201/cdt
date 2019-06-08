@@ -1,6 +1,8 @@
 package com.hufs.cdt;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.UiThread;
@@ -9,14 +11,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraUpdate;
 import com.naver.maps.map.MapFragment;
@@ -32,7 +46,6 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
 
 
     String myaddresss;
-
     String addr;//지번주소
     String jibun;//지번 주소
     String specefic;//상세 내용
@@ -51,6 +64,14 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
     String y;
     String nadd;
     TextView aid ,ajibunaddr, aspec, aprice, afloor , aroom, aoption, aguan, aparking, adate, aipju, aroomkind, aseol;
+
+    //Firebase Storage
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    // Create a storage reference from our app
+    StorageReference storageRef = storage.getReference();
+    // Create a reference with an initial file path and name
+    StorageReference pathReference;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_view);
@@ -81,7 +102,18 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
         myaddresss=intent.getStringExtra("addressname");
         myaddress.setText(myaddresss);
         addr=myaddresss;
+
+        //이미지 받아오기, 글 제목을 기준으로 ID를 받아옵니다.
+
+
         MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
+        // ImageView in your Activity
+
+        // Download directly from StorageReference using Glide
+
+        // (See MyAppGlideModule for Loader registration)
+
 
 
 
@@ -107,6 +139,45 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dataSnapshot=dataSnapshot.child(myaddresss);
+                pathReference = storageRef.child(myaddresss);
+
+                storageRef.child(myaddresss).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // Got the download URL for 'users/me/profile.png'
+                        ImageView imageView = findViewById(R.id.imageView);
+
+                        Log.d("이미지 URL",pathReference.getDownloadUrl().toString());
+
+                        GlideApp.with(getApplicationContext())
+                                .load(uri).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+                                .error(R.drawable.logo)
+                                .listener(new RequestListener<Drawable>() {
+                                    @Override
+                                    public boolean onLoadFailed(GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                        return false;
+                                    }
+
+                                    @Override
+                                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                        return false;
+                                    }
+                                })
+                                .into(imageView);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle any errors
+                    }
+                });
+
+
+
+
+
+
+                Log.d("이미지 이름은?",myaddresss);
                 jibun=dataSnapshot.child("jibun_address").getValue(String.class);
                 specefic=dataSnapshot.child("specefic").getValue(String.class);
                 room=dataSnapshot.child("room").getValue(String.class);
@@ -205,4 +276,5 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
 
 
     }
+
 }

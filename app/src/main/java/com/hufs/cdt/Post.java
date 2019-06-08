@@ -90,12 +90,14 @@ public class Post extends AppCompatActivity {
     public static String jibunadd, roadadd;
     public static String xx,yy;
     //이미지를 넣기위해 스토리지를 만드는 부분입니다.
+
+
     FirebaseStorage storage = FirebaseStorage.getInstance();
     // Create a storage reference from our app
     StorageReference storageRef = storage.getReference();
 
     // Create a reference to "mountains.jpg"
-    StorageReference mountainsRef;
+    StorageReference mountainImagesRef ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -188,7 +190,7 @@ public class Post extends AppCompatActivity {
 
                         //DB넣는부분입니다
                         //
-                        //
+                        //이미지 넣는 부분입니다. 제목은 지번주소+ " " + 상세주소
                         String key = mRootRef.push().getKey();
                         String mykey=key;
                         //String id=myid;
@@ -197,6 +199,11 @@ public class Post extends AppCompatActivity {
                         String roadaddress=getRoadadd();
                         String specefic=speadd.getText().toString();
                         String naddress=naddresss+" "+specefic;
+
+                        //이미지 소스의 주소를 저장합니다.
+                        mountainImagesRef = storageRef.child(naddress);
+                        String img_source=naddress;
+
                         Log.d("내주소: ",naddress);
                         String nprice=price.getText().toString();
                         String nfloor=floor.getText().toString();
@@ -211,12 +218,37 @@ public class Post extends AppCompatActivity {
 
 
 
+                        //이미지 얻기
+                        //
+                        //
+                        //
+                        //
+                        ImageView imageView = findViewById(R.id.room_img);
+                        imageView.setDrawingCacheEnabled(true);
+                        imageView.buildDrawingCache();
+                        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                        byte[] data = baos.toByteArray();
+
+                        UploadTask uploadTask = mountainImagesRef.putBytes(data);
+                        uploadTask.addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle unsuccessful uploads
+                            }
+                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                                // ...
+                            }
+                        });
 
 
 
 
-
-                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind,xx,yy);
+                        makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind,xx,yy,img_source);
 
                         Map<String, Object> postValues = mypost.toMap();
                         Map<String, Object> childUpdates = new HashMap<>();

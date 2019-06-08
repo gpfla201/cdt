@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference databaseRef = database.getReference("postings");
 
 
-
-
-
         //postings의 데이터들에 대해서
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
