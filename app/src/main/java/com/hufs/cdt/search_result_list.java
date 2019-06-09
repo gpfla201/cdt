@@ -19,24 +19,35 @@ import java.util.ArrayList;
 
 public class search_result_list extends AppCompatActivity {
 
-    static String inputaddress;
+    static String inputaddress,inputoption,inputprice,inputfee,inputipju,inputroomkind;
     private ListView mylistview = null;
-
 
     ArrayList<ItemData> arrayData = new ArrayList<>();
     ListAdapter oAdapter;
     ItemData myItem;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result_list);
 
+
+
+
         Intent intent=getIntent();
-        inputaddress=intent.getStringExtra("inputaddress");
+        if(option.from_option==true){
+            inputaddress=intent.getStringExtra("inputaddress");
+            inputprice=intent.getStringExtra("inputprice");
+            inputoption=intent.getStringExtra("inputoption");
+            inputfee=intent.getStringExtra("inputfee");
+            inputipju=intent.getStringExtra("inputipju");
+            inputroomkind=intent.getStringExtra("inputroomkind");
+        }
+        else {
+            inputaddress = intent.getStringExtra("inputaddress");
+        }
 
-
+        option.from_option=false;
 
         mylistview=(ListView)findViewById(R.id.search_list_view);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -55,20 +66,42 @@ public class search_result_list extends AppCompatActivity {
                     String roadaddress = fileSnapshot.child("jibun_address").getValue(String.class);
                     String price = fileSnapshot.child("price").getValue(String.class);
                     String uid = fileSnapshot.child("uid").getValue(String.class);
-                    //받아온 주소랑 가격을 받아옴
+                    String fee=fileSnapshot.child("guan").getValue(String.class);
+                    String ipju = fileSnapshot.child("ipju").getValue(String.class);
+                    String room =fileSnapshot.child("roomkind").getValue(String.class);
+                    String option=fileSnapshot.child("option").getValue(String.class);
 
-                    if(myaddress.contains(inputaddress)||roadaddress.contains(inputaddress)||uid.contains(inputaddress)) {
-                    myItem=new ItemData();
-                    myItem.strTitle = myaddress;
-                    myItem.strAddress =price;
-                    Log.i("주소",myItem.strTitle);
-                    Log.d("가격",myItem.strAddress);
-                    Log.d("판별", String.valueOf(myaddress.contains(inputaddress)));
-                    Log.d("인풋",inputaddress);
-                    Log.d("지번주소",myaddress);
-                    Log.d("도로명 주소",roadaddress);
-                        arrayData.add(myItem);
+                    //받아온 주소랑 가격을 받아옴
+                    if(inputfee==null) {
+                        if (myaddress.contains(inputaddress) || roadaddress.contains(inputaddress) || uid.contains(inputaddress)) {
+                            myItem = new ItemData();
+                            myItem.strTitle = myaddress;
+                            myItem.strAddress = price;
+                            Log.i("주소", myItem.strTitle);
+                            Log.d("가격", myItem.strAddress);
+                            Log.d("판별", String.valueOf(myaddress.contains(inputaddress)));
+                            Log.d("인풋", inputaddress);
+                            Log.d("지번주소", myaddress);
+                            Log.d("도로명 주소", roadaddress);
+                            arrayData.add(myItem);
+                        }
                     }
+                    else{
+                        if (myaddress.contains(inputaddress)&&price.contains(inputprice)&&option.contains(inputoption)&&fee.contains(inputfee)&&ipju.contains(inputipju)&&room.contains(inputroomkind)) {
+
+                            myItem = new ItemData();
+                            myItem.strTitle = myaddress;
+                            myItem.strAddress = price;
+                            Log.i("주소", myItem.strTitle);
+                            Log.d("가격", myItem.strAddress);
+                            Log.d("판별", String.valueOf(myaddress.contains(inputaddress)));
+                            Log.d("인풋", inputaddress);
+                            Log.d("지번주소", myaddress);
+                            Log.d("도로명 주소", roadaddress);
+                            arrayData.add(myItem);
+                        }
+                    }
+
                 }
                 oAdapter = new ListAdapter(arrayData);
                 mylistview.setAdapter(oAdapter);

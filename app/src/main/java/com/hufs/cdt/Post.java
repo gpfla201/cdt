@@ -246,8 +246,6 @@ public class Post extends AppCompatActivity {
                         });
 
 
-
-
                         makepost mypost=new makepost(id,mykey,naddresss,roadaddress,specefic,nprice,nfloor,nroom,noption,nguan,nparking,nseol,ndate,ipju,roomkind,xx,yy,img_source);
 
                         Map<String, Object> postValues = mypost.toMap();

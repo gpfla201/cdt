@@ -1,15 +1,21 @@
 package com.hufs.cdt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class option extends AppCompatActivity {
+
+    static boolean from_option=false;// 옵션에서 인텐트가 되는 값인가?
+
     EditText hopeaddress, hopeprice, option, extrafee;
     String address,price,opt,fee, ipju, roomkind;
+    Button search;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.option);
@@ -50,6 +56,16 @@ public class option extends AppCompatActivity {
                 roomkindChecked();
             }
         });
+
+        search=(Button)findViewById(R.id.search_match);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchmatch();
+            }
+        });
+
+
 
 
     }
@@ -106,6 +122,16 @@ public class option extends AppCompatActivity {
         ipju=ipjuChecked();
         roomkind=roomkindChecked();
 
+
+        Intent intent =new Intent(getApplicationContext(),search_result_list.class);
+        from_option=true;
+        intent.putExtra("inputaddress",address);
+        intent.putExtra("inputprice",price);
+        intent.putExtra("inputoption",opt);
+        intent.putExtra("inputfee",fee);
+        intent.putExtra("inputipju",ipju);
+        intent.putExtra("inputroomkind",roomkind);
+        startActivityForResult(intent,15);
 
     }
 
