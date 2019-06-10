@@ -77,6 +77,7 @@ public class Mypage extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),option.class);
+                intent.putExtra("email",strEmail);
                 startActivity(intent);
             }
         });
@@ -100,6 +101,7 @@ public class Mypage extends AppCompatActivity{
                 Intent intent = new Intent(
                         getApplicationContext(),
                         MainActivity.class);
+                intent.putExtra("uidemail",strEmail);
                 startActivity(intent);
             }
         });

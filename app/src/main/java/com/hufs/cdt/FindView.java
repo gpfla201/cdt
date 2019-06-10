@@ -44,7 +44,7 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
 
     private EditText test;
 
-
+    String myids,myemails;//받아온 id
     String myaddresss;
     String addr;//지번주소
     String jibun;//지번 주소
@@ -77,6 +77,7 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
         setContentView(R.layout.item_view);
 
 
+
         test=(EditText)findViewById(R.id.test);
         TextView myaddress=(TextView)findViewById(R.id.editText);
         Button review_btn = (Button)findViewById(R.id.login_btn);
@@ -100,8 +101,12 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
 
         Intent intent=getIntent();
         myaddresss=intent.getStringExtra("addressname");
+        myids=MainActivity.inputid;
+        myemails=MainActivity.inputemail;
+
         myaddress.setText(myaddresss);
         addr=myaddresss;
+        Log.d("넘어왔다!",myids);
 
         //이미지 받아오기, 글 제목을 기준으로 ID를 받아옵니다.
 
@@ -212,7 +217,8 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
                 Intent intent = new Intent(
                         getApplicationContext(),
                         MainActivity.class);
-
+                intent.putExtra("uidemail",myids);
+                intent.putExtra("useremail",myemails);
                 startActivity(intent);
             }
         });
@@ -229,9 +235,6 @@ public class FindView extends AppCompatActivity implements OnMapReadyCallback {
                 startActivity(intent);
             }
         });
-
-
-
 
 
     }

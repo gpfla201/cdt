@@ -1,6 +1,7 @@
 package com.hufs.cdt;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,22 +26,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     ArrayList<ItemData> arrayData = new ArrayList<>();
-    static boolean calledAlready = false;
+
     ListAdapter oAdapter;
     ItemData myItem;
-
+    static String  inputaddress,inputoption,inputprice,inputfee,inputipju,inputroomkind;
+    public static final String inputemail=option.uid;//이메일 주소
+    public static final String inputid=option.uids;//내 아이디
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //firebase를 부르기
-        if (!calledAlready)
-        {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true); // 다른 인스턴스보다 먼저 실행되어야 한다.
-            calledAlready = true;
-        }
+
 
         mylistview = (ListView)findViewById(R.id.main_list_view);
 
@@ -54,6 +52,31 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseRef = database.getReference("postings");
 
+        DatabaseReference optRef=database.getReference("options"+"/"+inputid);
+
+        optRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    //옵션값을 받아옴.
+                    inputaddress=dataSnapshot.child("address").getValue(String.class);
+                    Log.d("inputaddress 주소 잘 받아왔냐",inputaddress);
+                    inputoption=dataSnapshot.child("option").getValue(String.class);
+                    inputprice=dataSnapshot.child("price").getValue(String.class);
+                    inputfee=dataSnapshot.child("guan").getValue(String.class);
+                    inputipju=dataSnapshot.child("ipju").getValue(String.class);
+                    inputroomkind=dataSnapshot.child("roomkind").getValue(String.class);
+
+
+                }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
 
         //postings의 데이터들에 대해서
         databaseRef.addValueEventListener(new ValueEventListener() {
@@ -66,14 +89,30 @@ public class MainActivity extends AppCompatActivity {
                     String myaddress = fileSnapshot.child("address").getValue(String.class);
                     String spece= fileSnapshot.child("specefic").getValue(String.class);
                     myaddress=myaddress+" "+spece;
+                    String roadaddress = fileSnapshot.child("jibun_address").getValue(String.class);
                     String price = fileSnapshot.child("price").getValue(String.class);
-                    //받아온 주소랑 가격을 받아옴
-                    myItem=new ItemData();
-                    myItem.strTitle = myaddress;
-                    myItem.strAddress =price;
-                    Log.i("주소",myItem.strTitle);
-                    Log.d("가격",myItem.strAddress);
-                    arrayData.add(myItem);
+                    String fee=fileSnapshot.child("guan").getValue(String.class);
+                    String ipju = fileSnapshot.child("ipju").getValue(String.class);
+                    String room =fileSnapshot.child("roomkind").getValue(String.class);
+                    String option=fileSnapshot.child("option").getValue(String.class);
+
+
+                    //옵션 값
+
+
+                    if (myaddress.contains(inputaddress)&&price.contains(inputprice)&&option.contains(inputoption)&&fee.contains(inputfee)&&ipju.contains(inputipju)&&room.contains(inputroomkind)) {
+
+                        myItem = new ItemData();
+                        myItem.strTitle = myaddress;
+                        myItem.strAddress = price;
+                        Log.i("주소", myItem.strTitle);
+                        Log.d("가격", myItem.strAddress);
+                        Log.d("판별", String.valueOf(myaddress.contains(inputaddress)));
+                        Log.d("인풋", inputaddress);
+                        Log.d("지번주소", myaddress);
+                        Log.d("도로명 주소", roadaddress);
+                        arrayData.add(myItem);
+                    }
                 }
                 oAdapter = new ListAdapter(arrayData);
                 mylistview.setAdapter(oAdapter);
@@ -116,10 +155,12 @@ public class MainActivity extends AppCompatActivity {
         post_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Mypage.strEmail!=null){
+                if(Mypage.strEmail!=null||inputid!=null){
                 Intent intent = new Intent(
                         getApplicationContext(),
                         Post.class);
+                intent.putExtra("email",inputid);
+                intent.putExtra("useremail",inputemail);
                 startActivity(intent);
             }
             else{
@@ -134,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(
                         getApplicationContext(),
                         Mypage.class);
+                        intent.putExtra("email",inputid);
+                        intent.putExtra("useremail",inputemail);
                 startActivity(intent);
 
             }

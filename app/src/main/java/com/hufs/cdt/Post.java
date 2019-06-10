@@ -86,7 +86,7 @@ public class Post extends AppCompatActivity {
     public DatabaseReference conditionRef = mRootRef.child("posting").push();
     EditText aaddress,price, floor, room, option, guan, parking,seol,speadd,date;
     Button send;
-    public static final String id=Mypage.strEmail;
+    public static String id=MainActivity.inputemail;
     public static String jibunadd, roadadd;
     public static String xx,yy;
     //이미지를 넣기위해 스토리지를 만드는 부분입니다.
@@ -98,13 +98,11 @@ public class Post extends AppCompatActivity {
 
     // Create a reference to "mountains.jpg"
     StorageReference mountainImagesRef ;
-
+    public static String myids=MainActivity.inputid;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-
-
 
 
         findViewById(R.id.checkBox).setOnClickListener(new View.OnClickListener() {
@@ -260,9 +258,11 @@ public class Post extends AppCompatActivity {
 
 
                         Toast.makeText(getApplicationContext(), "게시글이 올라갔습니다.", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), FindView.class);
-                        intent.putExtra("addressname",naddress);
-                        startActivityForResult(intent,0);
+                        Intent intents = new Intent(getApplicationContext(), FindView.class);
+                        intents.putExtra("addressname",naddress);
+                        intents.putExtra("email",myids);
+                        intents.putExtra("useremail",id);
+                        startActivityForResult(intents,0);
                         finish();
                     }
                 });
