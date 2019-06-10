@@ -20,10 +20,18 @@
 - 이미지, 상세 주소등을 포함한 방 업로드 기능
 
 
+
+### 글 작성 시나리오
+![writes](./screenshot/writes.png)
+
+### 글 검색 시나리오
+![searchs](./screenshot/searchs.png)
+
 ## 개발 경과
 
 ### 2019년 4월 29일
 - LIST VIEW 완성
+
 
 ### 2019년 4월 30일
 - 사업계획서, 요구사항 정의서 추가
