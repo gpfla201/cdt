@@ -6,6 +6,14 @@
 - 윤혜선,깃헙 아이디: xhtlfdl93999 (팀원): Android 클라이언트 기능 및 UI 제작 게시글 권한 API 를 이용한 사진 등록
 - 박혜림,깃헙 아이디: gpfla201 (팀원): Android 클라이언트 기능 및 UI 제작 FirebaseDB 를 이용한 Chat기능
 
+## 신주민
+#### NaverMaps API를 활용한 중,단기 임대차 매칭 서비스
+
+
+
+
+
+
 
 ## 2019년 4월 29일
 - LIST VIEW 완성
